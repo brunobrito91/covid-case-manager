@@ -1,5 +1,6 @@
 package com.example.covidcasemanager.service;
 
+import com.example.covidcasemanager.exception.ResourceAlreadyExistsException;
 import com.example.covidcasemanager.exception.ResourceNotFoundException;
 import com.example.covidcasemanager.model.Person;
 import com.example.covidcasemanager.repository.PersonRepository;
@@ -13,7 +14,11 @@ import java.util.List;
 public class PersonService {
 
     private final PersonRepository personRepository;
+
     public Person save(Person person) {
+        if (personRepository.existsById(person.getCpf())) {
+            throw new ResourceAlreadyExistsException(person.getCpf());
+        }
         return personRepository.save(person);
     }
 
