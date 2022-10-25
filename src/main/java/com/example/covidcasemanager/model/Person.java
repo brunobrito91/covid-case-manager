@@ -15,6 +15,7 @@ public class Person {
 
     @Id
     @CPF(message = "cpf field invalid")
+    @NotBlank(message = "cpf field is mandatory")
     private String cpf;
     @NotBlank(message = "name field is mandatory")
     private String name;

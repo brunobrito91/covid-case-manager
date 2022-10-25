@@ -33,7 +33,7 @@ public class PersonService {
         person.setEmail(personUpdated.getEmail());
         person.setIsVaccinated(personUpdated.getIsVaccinated());
 
-        save(person);
+        personRepository.save(person);
     }
 
     public void delete(String cpf) {
